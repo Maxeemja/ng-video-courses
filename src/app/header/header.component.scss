@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #414452;
+
+  color: #fff;
+  justify-content: space-between;
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .button-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    button {
+      cursor: pointer;
+      outline: none;
+      display: flex;
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}

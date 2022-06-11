@@ -1,0 +1,18 @@
+<div class="course-item">
+  <section>
+    <div class="title-row">
+      <div class="title">{{course.title}}</div>
+      <div class="info-group">
+        <span><mat-icon>schedule</mat-icon> {{transformMinute(course.duration)}}</span>
+        <span><mat-icon>calendar_month</mat-icon> {{course.creationDate | date : 'd MMM, YYYY'}}</span>
+      </div>
+    </div>
+    <p class="descr">
+      {{course.description}}
+    </p>
+  </section>
+  <div class="button-group">
+    <button mat-flat-button color="warn"><mat-icon>edit</mat-icon> Edit</button>
+    <button mat-flat-button color="warn" (click)="onDelete.emit(course.id)"><mat-icon>delete</mat-icon> Delete</button>
+  </div>
+</div>

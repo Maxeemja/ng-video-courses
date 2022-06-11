@@ -1,30 +1,39 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { CoursesComponent } from './courses/courses.component';
+import { NavbarComponent } from './courses/navbar/navbar.component';
+import { SearchBarComponent } from './courses/search-bar/search-bar.component';
+import { CourseItemComponent } from './courses/course-item/course-item.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { LogoComponent } from './header/logo/logo.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CoursesComponent,
+    NavbarComponent,
+    SearchBarComponent,
+    CourseItemComponent,
     HeaderComponent,
     FooterComponent,
-    NavbarComponent,
     LogoComponent,
-    SearchBarComponent,
-    CoursesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

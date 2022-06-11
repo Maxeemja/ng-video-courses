@@ -1,0 +1,15 @@
+<form class="search-bar">
+  <div>
+    <input
+      name="search"
+      type="text"
+      [(ngModel)]="search"
+      placeholder="Type to search"
+    />
+    <button mat-flat-button color="primary" (click)="handleSearch()">Search</button>
+  </div>
+
+  <button mat-flat-button color="warn">
+    <mat-icon>add</mat-icon> Add course
+  </button>
+</form>
