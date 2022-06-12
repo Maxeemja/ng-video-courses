@@ -13,6 +13,10 @@ import { CourseItemComponent } from './courses/course-item/course-item.component
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './header/logo/logo.component';
+import { HighlightBorderDirective } from './directives/highlight-border.directive';
+import { DurationPipe } from './pipes/duration.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import { LogoComponent } from './header/logo/logo.component';
     HeaderComponent,
     FooterComponent,
     LogoComponent,
+    HighlightBorderDirective,
+    DurationPipe,
+    OrderByPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

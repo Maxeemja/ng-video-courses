@@ -13,9 +13,4 @@ export class CourseItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  transformMinute(value: number): string {
-    let hours = Math.floor(value / 60);
-    let minutes = Math.floor(value % 60);
-    return hours + 'h ' + minutes + ' min';
-  }
 }

@@ -1,18 +1,32 @@
-<div class="course-item">
+<div
+  class="course-item"
+  [highlightBorder]="course.creationDate"
+  [ngClass]="course.topRated ? 'top-rated' : ''"
+>
   <section>
     <div class="title-row">
-      <div class="title">{{course.title}}</div>
+      <div class="title">
+        {{ course.title | uppercase }}
+        <span *ngIf="course.topRated"><mat-icon>star</mat-icon></span>
+      </div>
       <div class="info-group">
-        <span><mat-icon>schedule</mat-icon> {{transformMinute(course.duration)}}</span>
-        <span><mat-icon>calendar_month</mat-icon> {{course.creationDate | date : 'd MMM, YYYY'}}</span>
+        <span
+          ><mat-icon>schedule</mat-icon> {{ course.duration | duration }}</span
+        >
+        <span
+          ><mat-icon>calendar_month</mat-icon>
+          {{ course.creationDate | date: "dd MMM, YYYY" }}</span
+        >
       </div>
     </div>
     <p class="descr">
-      {{course.description}}
+      {{ course.description }}
     </p>
   </section>
   <div class="button-group">
     <button mat-flat-button color="warn"><mat-icon>edit</mat-icon> Edit</button>
-    <button mat-flat-button color="warn" (click)="onDelete.emit(course.id)"><mat-icon>delete</mat-icon> Delete</button>
+    <button mat-flat-button color="warn" (click)="onDelete.emit(course.id)">
+      <mat-icon>delete</mat-icon> Delete
+    </button>
   </div>
 </div>

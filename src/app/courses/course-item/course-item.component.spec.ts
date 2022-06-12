@@ -11,6 +11,7 @@ describe('CourseItemComponent', () => {
     id: '7ebdc-5rbd2-3bop2',
     creationDate: new Date('09.11.2018'),
     duration: 300,
+    topRated: true
   };
 
   let component: CourseItemComponent;
@@ -27,10 +28,6 @@ describe('CourseItemComponent', () => {
 
   it('should create', () => {
     expect(component).toBeDefined();
-  });
-
-  it('transformMinute function is working correctly', () => {
-    expect(component.transformMinute(180)).toEqual('3h 0 min');
   });
 
   it('should render course title', () => {
