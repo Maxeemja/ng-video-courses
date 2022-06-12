@@ -29,14 +29,5 @@ describe('CoursesComponent', () => {
     expect(component.handleLoadMore).toHaveBeenCalledTimes(1);
     expect(console.log).toHaveBeenCalledOnceWith('load more');
   });
-  // it('handleDelete should log', () => {
-  //   let fixture = TestBed.createComponent(CourseItemComponent)
-  //   const button = fixture.debugElement.query(By.css('.button-group:last-child'));
-  //   console.log(button)
-  //   spyOn(component, 'handleDelete').and.callThrough();
-  //   spyOn(console, 'log')
-  //   button.triggerEventHandler('click', '');
-  //   expect(component.handleDelete).toHaveBeenCalledTimes(1)
-  //   expect(console.log).toHaveBeenCalledOnceWith('7ebdc-5rbd2-3bop2')
-  // });
+
 });
