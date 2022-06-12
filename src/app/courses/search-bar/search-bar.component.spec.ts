@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
 import { SearchBarComponent } from './search-bar.component';
 
 describe('SearchBarComponent', () => {
@@ -8,9 +8,8 @@ describe('SearchBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
-    })
-    .compileComponents();
+      declarations: [SearchBarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -20,6 +19,16 @@ describe('SearchBarComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeDefined();
+  });
+  it('handleSearch should log the input value', () => {
+    const button = fixture.debugElement.query(By.css('button'));
+    
+    component.search = 'aboba';
+    spyOn(component, 'handleSearch').and.callThrough();
+    spyOn(console, 'log');
+    button.triggerEventHandler('click', '');
+    expect(component.handleSearch).toHaveBeenCalledTimes(1);
+    expect(console.log).toHaveBeenCalledOnceWith(component.search);
   });
 });
