@@ -1,0 +1,39 @@
+
+<div class="container">
+  <form class="login-form" (ngSubmit)="onSubmit()">
+    <div>
+      <strong>Login</strong>
+    </div>
+
+    <label>
+      <p>
+        <span>E-mail</span>
+        <span>*required</span>
+      </p>
+      <input
+        [(ngModel)]="email"
+        name="email"
+        type="email"
+        placeholder="Enter your email address"
+      />
+    </label>
+
+    <label>
+      <p>
+        <span>Password</span>
+        <span>*required</span>
+      </p>
+      <input
+        [(ngModel)]="password"
+        name="password"
+        type="password"
+        placeholder="Enter your password"
+      />
+    </label>
+    <div class="submit-row">
+      <a href="#">Forgot Password?</a>
+      <button type="submit" mat-flat-button color="primary">Login</button>
+    </div>
+  </form>
+</div>
+

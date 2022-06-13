@@ -1,68 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Course } from 'src/Course';
 import { FilterPipe } from '../pipes/filter.pipe';
-
-const mockedCourses = [
-  {
-    title: 'Video Course 1. Name Tag',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, minus asdasdasdasdasdasdsdasdasdasdasdasdasd',
-    id: '7ebdc-5rbd2-3bop2',
-    creationDate: new Date('5/09/2012'),
-    duration: 22,
-    topRated: false,
-  },
-  {
-    title: 'Video Course 2. Name Tag',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, minus asdasdasdasdasdasdsdasdasdasdasdasdasd',
-    id: '7ebdc-5rbd2-3bop2',
-    creationDate: new Date('06/11/2022'),
-    duration: 185,
-    topRated: true,
-  },
-  {
-    title: 'Video Course 3. Name Tag',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, minus asdasdasdasdasdasdsdasdasdasdasdasdasdasdasdasdasdasddddddddddddddddddddddd',
-    id: '7ebdc-5rbd2-3bop2',
-    creationDate: new Date('10/09/2022'),
-    duration: 300,
-    topRated: false,
-  },
-];
+import { CoursesService } from '../services/courses.service';
 
 @Component({
-  selector: 'courses',
+  selector: 'courses-page',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent implements OnInit {
-  courses: Course[] = [];
-  constructor() {}
-
-  ngOnInit(): void {
-    console.log('onInit');
-    this.courses = mockedCourses;
-  }
-  ngOnChanges() {
-    console.log('onChanges');
-  }
+export class CoursesComponent {
+  courses$ = this.service.list;
+  constructor(private service: CoursesService) {}
   handleLoadMore() {
     console.log('load more');
   }
+
   identify(index: number, item: Course) {
     return item.id;
   }
+
   handleDelete(id: string) {
     console.log(id);
+    if (confirm(`Are you sure you want to delete this course?`)) {
+      this.service.deleteCourse(id);
+      return;
+    }
   }
 
   handleSearch(search: string) {
     if (search === '') {
-      this.courses = mockedCourses;
+      this.service.getCourses();
       return;
     }
-    this.courses = new FilterPipe().transform(mockedCourses, search);
+    this.courses$.next(
+      new FilterPipe().transform(this.courses$.getValue(), search)
+    );
   }
 }

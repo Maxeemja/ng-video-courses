@@ -1,7 +1,7 @@
 <main class="courses">
   <div class="container">
     <app-search-bar (onSearch)="handleSearch($event)"></app-search-bar>
-    <div *ngIf="courses.length; else empty">
+    <div *ngIf="courses$ | async as courses; else empty">
       <course-item
         *ngFor="let course of courses | orderBy; trackBy: identify"
         [course]="course"

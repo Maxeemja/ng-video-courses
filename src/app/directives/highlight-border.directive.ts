@@ -20,5 +20,5 @@ export class HighlightBorderDirective implements OnInit {
       this.el.nativeElement.style.border = '2px solid green';
     }
   }
-  private log() {}
+
 }

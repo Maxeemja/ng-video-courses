@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses/courses.component';
 import { NavbarComponent } from './courses/navbar/navbar.component';
@@ -17,6 +19,8 @@ import { HighlightBorderDirective } from './directives/highlight-border.directiv
 import { DurationPipe } from './pipes/duration.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     DurationPipe,
     OrderByPipe,
     FilterPipe,
+    LoginPageComponent,
+    IfAuthenticatedDirective,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     MatIconModule,
     MatButtonModule,
     FormsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

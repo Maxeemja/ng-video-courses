@@ -1,12 +1,12 @@
 <div class="header">
   <div class="container">
     <app-logo></app-logo>
-    <div class="button-group">
+    <div class="button-group" ifAuthenticated>
       <button>
         <mat-icon>person</mat-icon>
         User login
       </button>
-      <button>
+      <button (click)="onLogoff()">
         <mat-icon>logout</mat-icon>
         Log off
       </button>
