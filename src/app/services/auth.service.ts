@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as uuid from 'uuid';
 
 @Injectable({
@@ -6,7 +6,9 @@ import * as uuid from 'uuid';
 })
 export class AuthService {
   isAuthenticated = false;
-  constructor() {}
+
+  constructor() {
+  }
 
   login(email: string, password: string) {
     const id = uuid.v4();
@@ -16,12 +18,14 @@ export class AuthService {
     this.isAuthenticated = true;
     console.log('loggen in successfully');
   }
+
   logout() {
     this.isAuthenticated = false;
     localStorage.removeItem('token');
     localStorage.removeItem('firstName');
     console.log('logoff');
   }
+
   getUserInfo() {
     return localStorage.getItem('token');
   }
