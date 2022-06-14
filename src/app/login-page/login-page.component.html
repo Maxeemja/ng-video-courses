@@ -1,14 +1,14 @@
-
 <div class="container">
-  <form class="login-form" (submit)="onSubmit()">
+  <form class="login-form centered-plate" (submit)="onSubmit()">
     <div>
       <strong>Login</strong>
+      <span class="wrong">*wrong password</span>
     </div>
 
-    <label>
+    <label class="input-group">
       <p>
-        <span>E-mail</span>
-        <span>*required</span>
+        <span>E-mail:</span>
+        <span class="required">*required</span>
       </p>
       <input
         [(ngModel)]="email"
@@ -18,10 +18,10 @@
       />
     </label>
 
-    <label>
+    <label class="input-group">
       <p>
-        <span>Password</span>
-        <span>*required</span>
+        <span>Password:</span>
+        <span class=required>*required</span>
       </p>
       <input
         [(ngModel)]="password"

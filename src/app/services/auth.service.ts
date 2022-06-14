@@ -7,9 +7,6 @@ import * as uuid from 'uuid';
 export class AuthService {
   isAuthenticated = false;
 
-  constructor() {
-  }
-
   login(email: string, password: string) {
     const id = uuid.v4();
     console.log(id)

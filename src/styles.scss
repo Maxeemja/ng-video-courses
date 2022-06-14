@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 body {
   height: 100%;
   margin: 0 0 50px 0;
   padding: 0;
   background-color: #F2F3F7;
 }
+
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans', sans-serif;
@@ -14,6 +16,63 @@ body {
   width: 1140px;
   margin: 0 auto;
 }
+
+.plate {
+  margin: 0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+  0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+  0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+}
+
+.centered-plate {
+  @extend .plate;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .hidden {
   display: none;
+}
+
+.wrong {
+  display: none;
+  color: red;
+  font-size: 12px;
+}
+
+.input-group {
+
+  display: flex;
+  flex-direction: column;
+  p {
+    display: flex;
+    margin: .4rem 0;
+    justify-content: space-between;
+
+    .required {
+      color: grey;
+      font-size: 12px;
+    }
+  }
+
+  input {
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 0.5rem;
+    outline: none;
+
+    &:focus {
+      border: 1px solid #c2185b;
+    }
+  }
+
 }

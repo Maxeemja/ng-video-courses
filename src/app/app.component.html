@@ -1,10 +1,10 @@
 <div class="app">
   <app-header></app-header>
   <app-navbar ifAuthenticated></app-navbar>
-  <courses-page *ngIf="isAuth; else login"></courses-page>
-  <ng-template #login>
-    <login-page></login-page>
-  </ng-template>
+  <courses-page *ngIf="isAuth"></courses-page>
+<!--  <add-course-page></add-course-page>-->
+  <login-page *ngIf="!isAuth"></login-page>
+
   <app-footer></app-footer>
 </div>
 <router-outlet></router-outlet>

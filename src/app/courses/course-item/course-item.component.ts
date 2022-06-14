@@ -1,16 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Course } from 'src/Course';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {Course} from 'src/Course';
+
 @Component({
   selector: 'course-item',
   templateUrl: './course-item.component.html',
-  styleUrls: ['./course-item.component.scss']
+  styleUrls: ['./course-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseItemComponent implements OnInit {
+export class CourseItemComponent {
   @Input() course: Course;
-  constructor() { }
+
   @Output() onDelete = new EventEmitter();
-  
-  ngOnInit(): void {
-  }
 
 }

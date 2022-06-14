@@ -21,6 +21,7 @@ import {OrderByPipe} from './pipes/order-by.pipe';
 import {FilterPipe} from './pipes/filter.pipe';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {IfAuthenticatedDirective} from './directives/if-authenticated.directive';
+import { AddCoursePageComponent } from './add-course-page/add-course-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {IfAuthenticatedDirective} from './directives/if-authenticated.directive'
     FilterPipe,
     LoginPageComponent,
     IfAuthenticatedDirective,
+    AddCoursePageComponent,
   ],
   imports: [
     BrowserModule,
