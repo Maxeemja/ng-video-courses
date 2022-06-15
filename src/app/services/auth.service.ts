@@ -1,29 +1,40 @@
 import {Injectable} from '@angular/core';
 import * as uuid from 'uuid';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  isAuthenticated = false;
+  isAuthenticated = !!localStorage.getItem('token')
 
-  login(email: string, password: string) {
+  constructor(private router: Router) {
+  }
+
+  login(email: string) {
     const id = uuid.v4();
     console.log(id)
-    localStorage.setItem('token', email);
+
+    this.isAuthenticated = true
+    localStorage.setItem('token', id);
     localStorage.setItem('firstName', 'Max');
-    this.isAuthenticated = true;
-    console.log('loggen in successfully');
+    localStorage.setItem('login', email)
+    this.router.navigate(['/courses']).then(() => {
+      console.log('loggen in successfully');
+    })
   }
 
   logout() {
-    this.isAuthenticated = false;
+    this.isAuthenticated = false
     localStorage.removeItem('token');
     localStorage.removeItem('firstName');
-    console.log('logoff');
+    localStorage.removeItem('login')
+    this.router.navigate(['/login']).then(() => {
+      console.log('logoff');
+    })
   }
 
   getUserInfo() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('login');
   }
 }

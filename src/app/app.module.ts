@@ -6,22 +6,24 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {NgBreadcrumbModule} from "ng-breadcrumb";
 
 import {AppComponent} from './app.component';
-import {CoursesComponent} from './courses/courses.component';
-import {NavbarComponent} from './courses/navbar/navbar.component';
-import {SearchBarComponent} from './courses/search-bar/search-bar.component';
-import {CourseItemComponent} from './courses/course-item/course-item.component';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import {LogoComponent} from './header/logo/logo.component';
+import {CoursesComponent} from './pages/courses-page/courses.component';
+import {NavbarComponent} from './core/navbar/navbar.component';
+import {SearchBarComponent} from './pages/courses-page/search-bar/search-bar.component';
+import {CourseItemComponent} from './pages/courses-page/course-item/course-item.component';
+import {HeaderComponent} from './core/header/header.component';
+import {FooterComponent} from './core/footer/footer.component';
+import {LogoComponent} from './core/header/logo/logo.component';
 import {HighlightBorderDirective} from './directives/highlight-border.directive';
 import {DurationPipe} from './pipes/duration.pipe';
 import {OrderByPipe} from './pipes/order-by.pipe';
 import {FilterPipe} from './pipes/filter.pipe';
-import {LoginPageComponent} from './login-page/login-page.component';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
 import {IfAuthenticatedDirective} from './directives/if-authenticated.directive';
-import { AddCoursePageComponent } from './add-course-page/add-course-page.component';
+import {AddCoursePageComponent} from './pages/add-course-page/add-course-page.component';
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { AddCoursePageComponent } from './add-course-page/add-course-page.compon
     LoginPageComponent,
     IfAuthenticatedDirective,
     AddCoursePageComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { AddCoursePageComponent } from './add-course-page/add-course-page.compon
     MatButtonModule,
     FormsModule,
     CommonModule,
+    NgBreadcrumbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

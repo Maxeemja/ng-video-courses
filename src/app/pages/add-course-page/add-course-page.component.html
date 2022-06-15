@@ -1,7 +1,7 @@
 <div class="add-course">
   <div class="centered-plate">
-    <strong>New Course</strong>
-    <form>
+    <strong>{{editMode ? 'Edit Course' : 'New Course'}}</strong>
+    <form (submit)="onSubmit()">
       <label class="input-group">
         <p>
           <span>Title:</span>
@@ -23,7 +23,6 @@
           [(ngModel)]="description"
           name="descr"
           type="text"
-
           rows="8"
           cols="30"
           placeholder="Add description"

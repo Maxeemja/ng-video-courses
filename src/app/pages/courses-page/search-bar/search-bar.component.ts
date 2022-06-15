@@ -8,6 +8,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class SearchBarComponent {
   search: string = '';
   @Output() onSearch = new EventEmitter();
+  handleChange() {
+    if(this.search.length === 0) {
+      this.onSearch.emit(this.search.toLowerCase());
+    }
+  }
   handleSearch(): void {
     this.onSearch.emit(this.search.toLowerCase());
   }

@@ -4,12 +4,16 @@
       name="search"
       type="text"
       [(ngModel)]="search"
+      (input)="handleChange()"
       placeholder="Type to search"
     />
     <button mat-flat-button color="primary" (click)="handleSearch()">Search</button>
   </div>
 
-  <button mat-flat-button color="warn">
-    <mat-icon>add</mat-icon> Add course
-  </button>
+  <a routerLink="new">
+    <button mat-flat-button color="warn">
+      <mat-icon>add</mat-icon>
+      Add course
+    </button>
+  </a>
 </form>

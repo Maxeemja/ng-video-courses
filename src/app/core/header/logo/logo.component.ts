@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-logo',
-  template: ` 
+  template: `
     <div class="logo">
-      <img src="assets/play.svg" alt="" /> 
+      <img src="../../../../assets/play.svg" alt="" />
       <div>VIDEO COURSE</div>
     </div>
   `,

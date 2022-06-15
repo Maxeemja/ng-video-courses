@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Course} from 'src/Course';
-import {FilterPipe} from '../pipes/filter.pipe';
-import {CoursesService} from '../services/courses.service';
+import {FilterPipe} from '../../pipes/filter.pipe';
+import {CoursesService} from '../../services/courses.service';
 
 @Component({
   selector: 'courses-page',
@@ -15,6 +15,7 @@ export class CoursesComponent {
   }
 
   handleLoadMore() {
+
     console.log('load more');
   }
 
@@ -32,7 +33,6 @@ export class CoursesComponent {
   }
 
   handleSearch(search: string) {
-    console.log('aboba')
     if (search === '') {
       this.service.getCourses();
       return;

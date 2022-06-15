@@ -40,7 +40,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .wrong {
@@ -53,6 +53,7 @@ body {
 
   display: flex;
   flex-direction: column;
+
   p {
     display: flex;
     margin: .4rem 0;
@@ -74,5 +75,42 @@ body {
       border: 1px solid #c2185b;
     }
   }
+}
 
+.bread-container {
+  background-color: #fff;
+}
+
+ul.breadcrumb {
+  width: 1140px;
+  margin: 0 auto;
+  padding-left: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  text-transform: capitalize;
+  color: dimgrey;
+
+  li {
+    a {
+      cursor: pointer;
+    }
+
+    &:after {
+      content: '/';
+      color: lightskyblue;
+      margin: 0 .5rem;
+
+    }
+
+    &:last-of-type {
+      color: #000;
+      font-weight: bold;
+
+      &:after {
+        content: ''
+      }
+    }
+  }
 }
