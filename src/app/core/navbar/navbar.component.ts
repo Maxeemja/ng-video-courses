@@ -9,6 +9,6 @@ import {Component} from '@angular/core';
     </div>
   `,
 })
-export class NavbarComponent  {
+export class NavbarComponent {
 
 }

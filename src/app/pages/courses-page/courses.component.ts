@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Course} from 'src/Course';
 import {FilterPipe} from '../../pipes/filter.pipe';
 import {CoursesService} from '../../services/courses.service';
+import {ConfirmBoxEvokeService} from '@costlydeveloper/ngx-awesome-popup';
 
 @Component({
   selector: 'courses-page',
@@ -11,11 +12,10 @@ import {CoursesService} from '../../services/courses.service';
 export class CoursesComponent {
   courses$ = this.service.list;
 
-  constructor(private service: CoursesService) {
+  constructor(private service: CoursesService, private confirmBoxEvokeService: ConfirmBoxEvokeService) {
   }
 
   handleLoadMore() {
-
     console.log('load more');
   }
 
@@ -25,11 +25,12 @@ export class CoursesComponent {
 
 
   handleDelete(id: string) {
-    console.log(id);
-    if (confirm(`Are you sure you want to delete this course?`)) {
-      this.service.deleteCourse(id);
-      return;
-    }
+    this.confirmBoxEvokeService.danger('Do you really wanna delete this course?', '', 'Delete', 'Cancel')
+      .subscribe(resp => {
+        if (resp.success) {
+          this.service.deleteCourse(id);
+        }
+      });
   }
 
   handleSearch(search: string) {

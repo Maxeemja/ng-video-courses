@@ -7,6 +7,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {NgBreadcrumbModule} from "ng-breadcrumb";
+import {
+  NgxAwesomePopupModule,
+  ConfirmBoxConfigModule
+} from '@costlydeveloper/ngx-awesome-popup';
+
 
 import {AppComponent} from './app.component';
 import {CoursesComponent} from './pages/courses-page/courses.component';
@@ -52,7 +57,9 @@ import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.compo
     MatButtonModule,
     FormsModule,
     CommonModule,
-    NgBreadcrumbModule
+    NgBreadcrumbModule,
+    NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
+    ConfirmBoxConfigModule.forRoot() // Essential, mandatory confirm box module.
   ],
   providers: [],
   bootstrap: [AppComponent],

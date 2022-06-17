@@ -10,10 +10,9 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   constructor(private authService: AuthService, private router: Router) {
-    if(!authService.isAuthenticated) {
+    if (!authService.isAuthenticated) {
       router.navigate(['/login']).then()
     }
-
   }
   title = 'video-courses';
 }
