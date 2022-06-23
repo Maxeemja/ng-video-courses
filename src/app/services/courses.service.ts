@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Course} from 'src/Course';
-import {Constants} from '../common/constants';
+import {Course} from 'src/app/shared/Course.interface';
 import {BehaviorSubject} from 'rxjs';
+import {coursesList} from "../../mocks/courses";
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoursesService {
-  private _list = Constants.coursesList;
+  private _list: Course[] = coursesList;
 
   list = new BehaviorSubject(this._list);
 

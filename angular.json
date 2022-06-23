@@ -32,7 +32,7 @@
             ],
             "styles": [
               "node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme.css",
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []

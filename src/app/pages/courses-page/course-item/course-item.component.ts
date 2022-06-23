@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {Course} from 'src/Course';
-
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Course } from '../../../shared/Course.interface';
 @Component({
   selector: 'course-item',
   templateUrl: './course-item.component.html',
@@ -8,8 +7,12 @@ import {Course} from 'src/Course';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseItemComponent {
+  constructor() { }
   @Input() course: Course;
+  @Output() onDelete = new EventEmitter<string>()
 
-  @Output() onDelete = new EventEmitter();
+  onDeleteCourse(id: string) {
+    this.onDelete.emit(id)
+  }
 
 }

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {Course} from 'src/Course';
+import {Course} from 'src/app/shared/Course.interface';
 import {FilterPipe} from '../../pipes/filter.pipe';
 import {CoursesService} from '../../services/courses.service';
 import {ConfirmBoxEvokeService} from '@costlydeveloper/ngx-awesome-popup';
+import {coursesList} from "../../../mocks/courses";
 
 @Component({
   selector: 'courses-page',
@@ -39,7 +40,7 @@ export class CoursesComponent {
       return;
     }
     this.courses$.next(
-      new FilterPipe().transform(this.courses$.getValue(), search)
+      new FilterPipe().transform(coursesList, search)
     );
   }
 }

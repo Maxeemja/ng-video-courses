@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Course } from 'src/Course';
+import { Course } from '../../shared/Course.interface';
 import { By } from '@angular/platform-browser';
 import { CourseItemComponent } from './course-item.component';
 

@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Course } from 'src/Course';
+import { Course } from 'src/app/shared/Course.interface';
 @Pipe({
   name: 'filter',
 })

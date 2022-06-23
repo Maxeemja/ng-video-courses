@@ -24,8 +24,8 @@
     </p>
   </section>
   <div class="button-group">
-    <a [routerLink]="['/courses', course.id]"><button mat-flat-button color="warn"><mat-icon>edit</mat-icon> Edit</button></a>
-    <button mat-flat-button color="warn" (click)="onDelete.emit(course.id)">
+    <a [routerLink]="['/courses', course.id]"><button mat-flat-button color="accent"><mat-icon>edit</mat-icon> Edit</button></a>
+    <button mat-flat-button color="accent" (click)="onDelete.emit(course.id)">
       <mat-icon>delete</mat-icon> Delete
     </button>
   </div>
