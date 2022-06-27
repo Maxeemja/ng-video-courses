@@ -6,7 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {NgBreadcrumbModule} from "ng-breadcrumb";
 import {
   NgxAwesomePopupModule,
   ConfirmBoxConfigModule
@@ -57,7 +56,6 @@ import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.compo
     MatButtonModule,
     FormsModule,
     CommonModule,
-    NgBreadcrumbModule,
     NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
     ConfirmBoxConfigModule.forRoot() // Essential, mandatory confirm box module.
   ],

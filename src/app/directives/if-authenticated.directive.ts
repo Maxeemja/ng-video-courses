@@ -6,17 +6,17 @@ import {AuthService} from "../services/auth.service";
   selector: '[ifAuthenticated]',
 })
 export class IfAuthenticatedDirective {
-  constructor(private el: ElementRef, private router: Router, private authService: AuthService) {
+  constructor(private elemRef: ElementRef, private router: Router, private authService: AuthService) {
 
   }
 
   ngOnInit() {
-    this.router.events.subscribe((e) => {
-      if (e instanceof NavigationEnd) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
         if (this.authService.isAuthenticated) {
-          this.el.nativeElement.classList.remove('hidden')
+          this.elemRef.nativeElement.classList.remove('hidden')
         } else {
-          this.el.nativeElement.classList.add('hidden')
+          this.elemRef.nativeElement.classList.add('hidden')
         }
       }
     })

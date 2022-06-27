@@ -80,7 +80,17 @@ body {
 }
 
 .bread-container {
+  display: flex;
+  align-items: center;
+  height: 40px;
   background-color: #fff;
+  .bread-item:last-of-type {
+    font-weight: bold;
+  }
+  .divider {
+    color: lightskyblue;
+    margin: 0 .5rem;
+  }
 }
 
 ul.breadcrumb {
