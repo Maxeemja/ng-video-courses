@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
+import {filter, takeUntil, tap} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 
 @Component({
@@ -9,8 +11,8 @@ import {NavigationEnd, Router} from "@angular/router";
       <div class="container">
         <div class="bread-group">
           <span class="bread-item" *ngFor="let item of path; let idx = index">
-            <a *ngIf="idx !== this.path.length - 1; else notAlink" [routerLink]="'/' + item">{{formatItem(item)}}</a>
-            <ng-template #notAlink>{{formatItem(item)}}</ng-template>
+            <a *ngIf="idx !== this.path.length - 1; else notAlink" [routerLink]="'/' + item">{{item | titlecase}}</a>
+            <ng-template #notAlink>{{item | titlecase}}</ng-template>
             <span class="divider" *ngIf="idx !== this.path.length - 1">/</span>
           </span>
         </div>
@@ -21,18 +23,23 @@ import {NavigationEnd, Router} from "@angular/router";
 export class NavbarComponent {
   path: string[] = []
 
-  formatItem(item: string) {
-    return `${item.charAt(0).toUpperCase()}${item.slice(1)}`
-  }
+  private readonly destroy$: Subject<void> = new Subject();
 
   constructor(private router: Router) {
-    router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+    router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      takeUntil(this.destroy$),
+      tap(() => {
         this.path = router.url.slice(1).split('/')
-        console.log(this.path)
-      }
-    })
+      })
+    )
+      .subscribe()
   }
 
+  ngOnDestroy() {
+    console.log('destroyed')
+    this.destroy$.next()
+    this.destroy$.complete()
+  }
 
 }

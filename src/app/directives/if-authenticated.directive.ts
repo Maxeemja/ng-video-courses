@@ -1,25 +1,31 @@
-import {Directive, ElementRef} from '@angular/core';
+import {Directive, HostBinding} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import {filter, takeUntil, tap} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Directive({
   selector: '[ifAuthenticated]',
 })
 export class IfAuthenticatedDirective {
-  constructor(private elemRef: ElementRef, private router: Router, private authService: AuthService) {
+  private readonly destroy$: Subject<void> = new Subject();
 
+  constructor(private router: Router, private authService: AuthService) {
+    router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      takeUntil(this.destroy$),
+      tap(() => {
+        this.isHidden = !this.authService.isAuthenticated;
+      })
+    ).subscribe()
   }
 
-  ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (this.authService.isAuthenticated) {
-          this.elemRef.nativeElement.classList.remove('hidden')
-        } else {
-          this.elemRef.nativeElement.classList.add('hidden')
-        }
-      }
-    })
-  }
+  @HostBinding('class.hidden')
+  isHidden: boolean
 
+  ngOnDestroy() {
+    console.log('destroyed')
+    this.destroy$.next()
+    this.destroy$.unsubscribe()
+  }
 }
