@@ -27,7 +27,11 @@
         border: 1px solid #c2185b;
       }
     }
+    .required-red {
+      font-size: 14px;
+      color: red;
 
+    }
     .submit-row {
       display: flex;
       justify-content: flex-end;

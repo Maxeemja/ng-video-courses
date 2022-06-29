@@ -4,7 +4,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {
   NgxAwesomePopupModule,
@@ -28,6 +29,7 @@ import {LoginPageComponent} from './pages/login-page/login-page.component';
 import {IfAuthenticatedDirective} from './directives/if-authenticated.directive';
 import {AddCoursePageComponent} from './pages/add-course-page/add-course-page.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.compo
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
     ConfirmBoxConfigModule.forRoot() // Essential, mandatory confirm box module.

@@ -1,70 +1,81 @@
 <div class="add-course">
   <div class="centered-plate">
     <strong>{{editMode ? 'Edit Course' : 'New Course'}}</strong>
-    <form (submit)="onSubmit()">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
       <label class="input-group">
         <p>
           <span>Title:</span>
-          <span class="required">*required</span>
+          <span class="required">*</span>
         </p>
         <input
-          [(ngModel)]="title"
+          formControlName="title"
           name="title"
           type="text"
           placeholder="Enter title"
         />
+        <p *ngIf="title?.invalid && title?.touched" class="required-red">
+          REQUIRED
+        </p>
       </label>
       <label class="input-group">
         <p>
           <span>Description:</span>
-          <span class="required">*required</span>
+          <span class="required">*</span>
         </p>
         <textarea
-          [(ngModel)]="description"
+          formControlName="description"
           name="descr"
           type="text"
           rows="8"
           cols="30"
           placeholder="Add description"
         ></textarea>
+        <p *ngIf="description?.invalid && description?.touched" class="required-red">
+          REQUIRED
+        </p>
       </label>
       <div class="duration-right">
         <label class="input-group short">
           <p>
             <span>Duration:</span>
-            <span class="required">*required</span>
+            <span class="required">*</span>
           </p>
           <input
-            [(ngModel)]="duration"
+            formControlName="duration"
             name="duration"
             type="number"
             placeholder="minutes"
           />
+          <p *ngIf="duration?.invalid && duration?.touched" class="required-red">
+            REQUIRED
+          </p>
         </label>
-        <div *ngIf="duration">
-          {{duration | duration}}
+        <div *ngIf="duration!">
+          {{duration.value | duration}}
         </div>
       </div>
 
       <label class="input-group short">
         <p>
           <span>Date:</span>
-          <span class="required">*required</span>
+          <span class="required">*</span>
         </p>
         <input
-          [(ngModel)]="date"
+          formControlName="date"
           name="date"
           type="date"
           placeholder="minutes"
         />
+        <p *ngIf="date?.invalid && date?.touched" class="required-red">
+          REQUIRED
+        </p>
       </label>
       <label class="input-group short">
         <p>
           <span>Authors:</span>
-          <span class="required">*required</span>
         </p>
         <input
-          [(ngModel)]="authors"
+          formControlName="authors"
           name="authors"
           type="text"
           placeholder="Start typing"
