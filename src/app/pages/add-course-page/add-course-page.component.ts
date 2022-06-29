@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {CoursesService} from "../../services/courses.service";
-import {DatePipe} from "@angular/common";
 import * as uuiv4 from 'uuid'
 
 @Component({
@@ -30,7 +29,7 @@ export class AddCoursePageComponent {
       const {title, duration, description, creationDate}: any = courseToEdit
       this.title = title
       this.duration = duration
-      this.date = new DatePipe('en-US').transform(creationDate, 'yyyy-MM-dd')
+      this.date = creationDate
       this.description = description
     }
   }
@@ -59,4 +58,5 @@ export class AddCoursePageComponent {
     }
     this.router.navigate(['/courses']).then()
   }
+
 }
