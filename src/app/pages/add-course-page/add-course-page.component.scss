@@ -2,13 +2,16 @@
   strong {
     font-size: 28px;
   }
+
   .centered-plate {
     width: 50%;
     gap: .5rem;
   }
+
   .short {
     width: max-content;
   }
+
   form {
     display: flex;
     flex-direction: column;
@@ -24,10 +27,18 @@
         border: 1px solid #c2185b;
       }
     }
+
     .submit-row {
       display: flex;
       justify-content: flex-end;
       gap: 1rem;
     }
+
+    .duration-right {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
   }
 }

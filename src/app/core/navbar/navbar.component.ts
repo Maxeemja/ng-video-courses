@@ -27,8 +27,8 @@ export class NavbarComponent {
 
   constructor(private router: Router) {
     router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
       takeUntil(this.destroy$),
+      filter(event => event instanceof NavigationEnd),
       tap(() => {
         this.path = router.url.slice(1).split('/')
       })

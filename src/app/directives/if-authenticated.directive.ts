@@ -12,8 +12,8 @@ export class IfAuthenticatedDirective {
 
   constructor(private router: Router, private authService: AuthService) {
     router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
       takeUntil(this.destroy$),
+      filter((event) => event instanceof NavigationEnd),
       tap(() => {
         this.isHidden = !this.authService.isAuthenticated;
       })

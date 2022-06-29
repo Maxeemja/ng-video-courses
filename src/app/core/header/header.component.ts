@@ -17,8 +17,8 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService, private router: Router) {
     router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
       takeUntil(this.destroy$),
+      filter(event => event instanceof NavigationEnd),
       tap(() => {
         this.userLogin = this.authService.getUserInfo()!
       })
