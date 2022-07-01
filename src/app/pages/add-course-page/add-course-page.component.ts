@@ -2,8 +2,9 @@ import {Component} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {CoursesService} from "../../services/courses.service";
 import * as uuiv4 from 'uuid'
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
 import {DatePipe} from "@angular/common";
+import {Course} from "../../shared/Course.interface";
 
 
 @Component({
@@ -19,31 +20,31 @@ export class AddCoursePageComponent {
 
   id: string = '';
 
-  constructor(private fb: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
               private coursesService: CoursesService) {
   }
 
 
-  get duration() {
-    return this.courseForm.get('duration')
+  get duration(): AbstractControl {
+    return this.courseForm.get('duration')!;
   }
 
-  get title() {
-    return this.courseForm.get('title')
+  get title(): AbstractControl {
+    return this.courseForm.get('title')!;
   }
 
-  get description() {
-    return this.courseForm.get('description')
+  get description(): AbstractControl {
+    return this.courseForm.get('description')!;
   }
 
-  get date() {
-    return this.courseForm.get('date')
+  get date(): AbstractControl {
+    return this.courseForm.get('date')!;
   }
 
   ngOnInit() {
-    this.courseForm = this.fb.group({
+    this.courseForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       duration: ['', Validators.required],
@@ -52,32 +53,34 @@ export class AddCoursePageComponent {
     })
 
     this.id = this.route.snapshot.paramMap.get('id')!
+
     if (this.id) {
       this.editMode = true;
-      this.coursesService.getCourses()
-      const courseToEdit = this.coursesService.getCourseById(this.id)
-      let {title, duration, description, creationDate}: any = courseToEdit
-      creationDate = new DatePipe('en-US').transform(creationDate, 'yyyy-MM-dd')
+      this.coursesService.getCourses();
+      const courseToEdit = this.coursesService.getCourseById(this.id);
+      let {title, duration, description, creationDate}: Course = courseToEdit!;
+      const stringDate = new DatePipe('en-US').transform(creationDate, 'yyyy-MM-dd');
       this.courseForm.setValue({
         title: title,
         description: description,
         duration: duration,
-        date: creationDate,
+        date: stringDate,
         authors: ''
       })
     }
   }
 
   handleCancel() {
-    console.log('canceled!')
-    this.router.navigate(['/courses']).then()
+    console.log('canceled!');
+    void this.router.navigate(['/courses']);
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.courseForm.invalid) {
-      return this.courseForm.markAllAsTouched()
+      return this.courseForm.markAllAsTouched();
     }
-    const {date, title, duration, description} = this.courseForm.value
+
+    const {date, title, duration, description} = this.courseForm.value;
     const course = {
       topRated: false,
       id: this.editMode ? this.id : uuiv4.v4(),
@@ -86,12 +89,14 @@ export class AddCoursePageComponent {
       title: title,
       description: description
     }
+
     if (this.editMode) {
-      this.coursesService.updateCourse(this.id, course)
+      this.coursesService.updateCourse(this.id, course);
     } else {
-      this.coursesService.addCourse(course)
+      this.coursesService.addCourse(course);
     }
-    this.router.navigate(['/courses']).then()
+
+    void this.router.navigate(['/courses']);
   }
 
 }

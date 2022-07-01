@@ -21,7 +21,7 @@ import {Subject} from "rxjs";
   `,
 })
 export class NavbarComponent {
-  path: string[] = []
+  path: string[] = [];
 
   private readonly destroy$: Subject<void> = new Subject();
 
@@ -33,13 +33,13 @@ export class NavbarComponent {
         this.path = router.url.slice(1).split('/')
       })
     )
-      .subscribe()
+      .subscribe();
   }
 
   ngOnDestroy() {
-    console.log('destroyed')
-    this.destroy$.next()
-    this.destroy$.complete()
+    console.log('destroyed');
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

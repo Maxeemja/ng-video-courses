@@ -23,17 +23,17 @@ export class HeaderComponent {
         this.userLogin = this.authService.getUserInfo()!
       })
     )
-      .subscribe()
+      .subscribe();
   }
 
   onLogoff(): void {
-    this.authService.logout()
+    this.authService.logout();
   }
 
-  ngOnDestroy() {
-    console.log('destroyed')
-    this.destroy$.next()
-    this.destroy$.complete()
+  ngOnDestroy(): void {
+    console.log('destroyed');
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }
