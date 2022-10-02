@@ -58,7 +58,7 @@ export class AddCoursePageComponent {
       this.editMode = true;
       this.coursesService.getCourses();
       const courseToEdit = this.coursesService.getCourseById(this.id);
-      let {title, duration, description, creationDate}: Course = courseToEdit!;
+      const {title, duration, description, creationDate}: Course = courseToEdit!;
       const stringDate = new DatePipe('en-US').transform(creationDate, 'yyyy-MM-dd');
       this.courseForm.setValue({
         title: title,

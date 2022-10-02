@@ -13,7 +13,9 @@ export class CoursesService {
 
   getCourses() {
     this.list.next(this._list);
+    this.list.subscribe(console.log)
   }
+
 
   deleteCourse(id: string) {
     this._list = this._list.filter((c) => c.id !== id);

@@ -20,8 +20,7 @@ export class IfAuthenticatedDirective {
     ).subscribe()
   }
 
-  @HostBinding('class.hidden')
-  isHidden: boolean
+  @HostBinding('class.hidden') isHidden: boolean;
 
   ngOnDestroy() {
     console.log('destroyed')
